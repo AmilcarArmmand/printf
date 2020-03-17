@@ -36,6 +36,7 @@ int _printf(const char *format, ...)
 				break;
 			case 'd':
 				number = va_arg(ap, int);
+				printf("%d", number);
 				format--;
 				_itoa(number, numberstring, 10);
 				_puts(numberstring);
