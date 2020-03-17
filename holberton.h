@@ -8,9 +8,9 @@
 
 int _printf(const char *format, ...);
 int _putchar(char c);
-
-
-
+void _puts(char *str);
+int _strlen(char *s);
+void *_strcpy(char *dest, char *src);
 
 
 #endif /* PRINTF_H */
