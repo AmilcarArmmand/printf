@@ -50,6 +50,7 @@ char *_itoa(int num, char *str, int base)
 			str[i] = (value - 10) + 'a';
 		else
 			str[i] = value + '0';
+		num = num / base;
 		i++;
 	}
 	if (flagIsNegative)
