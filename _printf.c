@@ -60,4 +60,3 @@ int _printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (number_of_chars);
-}
