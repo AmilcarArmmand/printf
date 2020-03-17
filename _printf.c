@@ -1,76 +1,49 @@
-#include <stddef.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdarg.h>
-#include <stdlib.h>
+#include <limits.h>
 #include "holberton.h"
 
 int _printf(const char *format, ...)
 {
-	va_list ap, ap2;
-	char *copy, *string, *finalstring;
-	int i, letter, spacecount = 0;
+	va_list ap;
+	int number_of_chars, letter; /* return value count of characters printed */
+	char *string;
+
+	number_of_chars = 0;
 
 	va_start(ap, format);
-	copy = malloc(sizeof(format));
-	_strcpy(copy, format);
-	for (i = 0; copy[i]; i++)
+	while (*format)
 	{
-		if (copy[i] == '%')
+		number_of_chars++;
+		if (*format == '%')
 		{
-			i++;
-			switch (copy[i])
+			format++;
+			switch (*format)
 			{
 			case 'c':
-			       	spacecount++;
-				i++;
+				letter = va_arg(ap, int);
+				format--;
+				_putchar(letter);
+			       	format += 2;
 				break;
 			case 's':
 				string = va_arg(ap, char *);
-				spacecount += _strlen(string);
-				i++;
-				break;
-			case '\0':
-				break;
-			case '%':
-				spacecount++;
-				i++;
+				format--;
+				_puts(string);
+				format += 2;
+				number_of_chars += _strlen(string);
 				break;
 			default:
-				i++;
+				continue;  /* int i;  switch cases  */
 			}
+		}
+		else if (*format != '%' || *format != '\n')
+		{
+			_putchar(*format);
+			format++;
 		}
 	}
 	va_end(ap);
-	va_start(ap2, format);
-	finalstring = malloc(sizeof(format) + spacecount);
-	for (i = 0; copy[i]; i++)
-	{
-    	       	finalstring[i] = copy[i];
-		if (copy[i] == '%')
-		{
-			i++;
-			switch (copy[i])
-			{
-			case 'c':
-				letter = va_arg(ap2, int);
-				finalstring[i] += letter;
-				break;
-		       	case 's':
-				string = va_arg(ap, char *);
-				_strcat(finalstring, string);
-				i++;
-				break;
-			case '\0':
-				break;
-			case '%':
-				_strcat(finalstring, "%");
-				i++;
-			default:
-				i++;
-	      		}
-		}
-       	}
-	va_end(ap2);
-	printf("%s\n", finalstring);
-	return (_strlen(finalstring));
+	return (number_of_chars);
 }
