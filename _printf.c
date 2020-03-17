@@ -41,13 +41,13 @@ int _printf(const char *format, ...)
 				_puts(numberstring);
 			       	format += 2;
 				number_of_chars += _strlen(numberstring);
-			case 'i':
+/*			case 'i':
 				number = va_arg(ap, int);
                                 format--;
                                 numberstring = _itoa(number, numberstring, 10);
                                 _puts(numberstring);
                                 format += 2;
-                                number_of_chars += _strlen(numberstring);
+                                number_of_chars += _strlen(numberstring); */
 			default:
 				continue;  /* int i;  switch cases  */
 			}
@@ -60,3 +60,4 @@ int _printf(const char *format, ...)
 	}
 	va_end(ap);
 	return (number_of_chars);
+}
