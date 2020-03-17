@@ -5,11 +5,12 @@
 #include "printf_header.h"
 #include "printf_functions.c"
 
-int _printf(const char *format, ...)
+void _printf(const char *format, ...)
 {
 	va_list ap, apcopy;
-	char *copy, *string, *finalstring, *intstring;
-	int copyindex, finalStringIndex, number, letter, spacecount = 0;
+	char *copy, *string, *finalstring /* ,*intstring */;
+	int copyindex, finalStringIndex, /*number,*/ letter, spacecount = 0;
+	char percent = '%';
 
 	va_start(ap, format);
 	copy = malloc(sizeof(format));
@@ -33,12 +34,6 @@ int _printf(const char *format, ...)
 				spacecount += _strlen(string);
 				i++;
 				break;
-			case 'i':
-				number = va_arg(ap, int);
-				/*itoa*/
-				i++;
-				spacecount += _strlen(intstring);
-			       	break;
 			case '\0':
 				break;
 			case '%':
@@ -69,24 +64,17 @@ int _printf(const char *format, ...)
                         {
                         case 'c':
                                 letter = va_arg(apcopy, int);
-				finalStringIndex += _strlen(letter) - 1;
+				_strcat(finalstring, letter);
 				break;
                         case 's':
                                 string = va_arg(apcopy, char *);
-                                /* add to finalstring */
-
+                                _strcat(finalstring, letter);
 				i++;
                                 break;
-                        case 'i':
-                                number = va_arg(apcopy, int);
-                                /*itoa*/
-                                /*write int str to final*/
-                                break;
-                                i++;
                         case '\0':
                                 break;
                         case '%':
-                                /* write '%' to final*/
+				_strcat(finalstring, percent);
 				i++;
                                 break;
                         default:
