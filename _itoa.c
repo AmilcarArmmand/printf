@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#include "holberton.h"
 
 void reverse(char *str, int len)
 {
@@ -57,6 +57,6 @@ char *_itoa(int num, char *str, int base)
 
 	str[i] = '\0';
 /* reverse string */
-	reverse(str, strlen(str));
+	reverse(str, _strlen(str));
 	return (str);
 }
