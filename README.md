@@ -34,4 +34,3 @@ Write our own version of printf.
 ## Author    :black_nib:
 * **Amilcar Armmand** - [AmilcarArmmand](https://github.com/AmilcarArmmand)
 * **Matthew Salem** - [mittsahl](https://github.com/mittsahl)
-# printf
