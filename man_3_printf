@@ -1,0 +1,39 @@
+.TH man 3 "04 May 2015" "0.32" "holberton man page"
+.SH NAME
+.B _printf
+- formatted output conversion.
+.SH SYNOPSIS
+#include <stdio.h>
+#include <stdarg.h>
+
+int powten(int a);
+int _printf(const char *format, ...);
+int _putchar(char c);
+void _puts(char *str);
+int _strlen(char *s);
+void *_strcpy(char *dest, char *src);
+char *_itoa(int num, char *str, int base);
+void reverse(char *str, int len);
+void rev_string(char *s);
+
+.SH DESCRIPTION
+This nascent version of the printf function produces output to standard output according to formats specifiers described below.
+The function uses the prototype int _printf(const char *format, ...), where the function does not know how many parameters are
+passed to it or the type of parameters passed to it, it only requires that the first parameter passed to it be a string.
+
+* c: a char data type
+* s: an array of char data type
+* %: conversion format specifier
+* d: integer data type simple conversion
+* i: integer data type
+
+.SH OPTIONS
+ Function does not take any options.
+.SH SEE ALSO
+.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+.SH BUGS
+Does not adhere to the 40 lines per function suggested limit of the C coding stlye for Holberton School.  Does not handle
+flag characters, field width, precision, length modifiers or alternate character meanings with a backslash, or printing special
+characters preceded by a backslash.
+.SH AUTHOR
+Amilcar Armmand and Matthew Salem
