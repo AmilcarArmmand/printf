@@ -51,7 +51,7 @@ int _printf(const char *format, ...)
 				number = va_arg(ap, int);
 				numberofdigits = powten(number);
 				format--;
-				numberstring = malloc(sizeof(char) * numberofdigits - 1);
+				numberstring = malloc(sizeof(char) * numberofdigits);
 				numberstring = _itoa(number, numberstring, 10);
 				_puts(numberstring);
 			       	format += 2;
@@ -65,6 +65,10 @@ int _printf(const char *format, ...)
                                 format += 2;
                                 number_of_chars += _strlen(numberstring);
 				break;
+			case '%':
+				_putchar('%');
+				format++;
+				number_of_chars++;
 			default:
 				continue;  /* int i;  switch cases  */
 			}
