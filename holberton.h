@@ -6,6 +6,7 @@
 #include <stdarg.h>
 #include <limits.h>
 
+int powten(int a);
 int _printf(const char *format, ...);
 int _putchar(char c);
 void _puts(char *str);
