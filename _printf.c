@@ -5,13 +5,25 @@
 #include <math.h>
 #include "holberton.h"
 
+int powten(int a)
+{
+	int pow = 0;
+	int result = 1;
+	int base = 10;
+	while (a / result > 1)
+	{
+		result *= base;
+		pow++;
+	}
+	return (pow);
+}
+
 int _printf(const char *format, ...)
 {
 	va_list ap;
-	int number_of_chars, letter, number;
+	int number_of_chars, letter, number, numberofdigits;
 	char *string, *numberstring;
 
-	numberstring = malloc(sizeof(char) * 10);
 	number_of_chars = 0;
 	va_start(ap, format);
 	while (*format)
@@ -37,11 +49,14 @@ int _printf(const char *format, ...)
 				break;
 			case 'd':
 				number = va_arg(ap, int);
+				numberofdigits = powten(number);
 				format--;
+				numberstring = malloc(sizeof(char) * numberofdigits - 1);
 				numberstring = _itoa(number, numberstring, 10);
 				_puts(numberstring);
 			       	format += 2;
 				number_of_chars += _strlen(numberstring);
+				break;
 			case 'i':
 				number = va_arg(ap, int);
                                 format--;
@@ -49,6 +64,7 @@ int _printf(const char *format, ...)
                                 _puts(numberstring);
                                 format += 2;
                                 number_of_chars += _strlen(numberstring);
+				break;
 			default:
 				continue;  /* int i;  switch cases  */
 			}
