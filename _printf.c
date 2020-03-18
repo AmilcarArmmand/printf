@@ -5,18 +5,11 @@
 #include <math.h>
 #include "holberton.h"
 
-int powten(int a)
-{
-	int pow = 0;
-	int result = 1;
-	int base = 10;
-	while (a / result > 1)
-	{
-		result *= base;
-		pow++;
-	}
-	return (pow);
-}
+/**
+ * _printf - prints different data types in formatted string
+ * Return: number of chars in output
+ * @format: const string from main
+ */
 
 int _printf(const char *format, ...)
 {
