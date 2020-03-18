@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <limits.h>
+#include <math.h>
 #include "holberton.h"
 
 int _printf(const char *format, ...)
@@ -10,8 +11,8 @@ int _printf(const char *format, ...)
 	int number_of_chars, letter, number;
 	char *string, *numberstring;
 
+	numberstring = malloc(sizeof(char) * 10);
 	number_of_chars = 0;
-
 	va_start(ap, format);
 	while (*format)
 	{
@@ -37,22 +38,22 @@ int _printf(const char *format, ...)
 			case 'd':
 				number = va_arg(ap, int);
 				format--;
-				_itoa(number, numberstring, 10);
+				numberstring = _itoa(number, numberstring, 10);
 				_puts(numberstring);
 			       	format += 2;
 				number_of_chars += _strlen(numberstring);
-/*			case 'i':
+			case 'i':
 				number = va_arg(ap, int);
                                 format--;
                                 numberstring = _itoa(number, numberstring, 10);
                                 _puts(numberstring);
                                 format += 2;
-                                number_of_chars += _strlen(numberstring); */
+                                number_of_chars += _strlen(numberstring);
 			default:
 				continue;  /* int i;  switch cases  */
 			}
 		}
-		else if (*format != '%' || *format != '\n')
+		else if (*format != '%')
 		{
 			_putchar(*format);
 			format++;
